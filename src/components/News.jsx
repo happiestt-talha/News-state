@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NewsCard from './NewsCard'
 
 const News = () => {
@@ -10,7 +10,10 @@ const News = () => {
         setData(data.articles);
         console.log(data);
     }
-    fetchData("https://newsapi.org/v2/top-headlines?country=us&apiKey=0dd418eda768429cba391f6cab5450d9")
+    useEffect(() => {
+        fetchData("https://newsapi.org/v2/top-headlines?country=us&apiKey=0dd418eda768429cba391f6cab5450d9")
+    }, [])
+    const techyImgURL = 'https://th.bing.com/th/id/R.1510fe8202711595e506301e5deba565?rik=cTQudyXDcx472w&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2fc%2f1%2f8%2f647485.jpg&ehk=0RYQAaVD4Xiwm24kBigDwRxT1QpdyXVfPzyaANl%2bQGg%3d&risl=&pid=ImgRaw&r=0'
     return (
         <>
             <div className="container">
@@ -18,8 +21,8 @@ const News = () => {
                     {
                         data.map((elem) => {
 
-                            return <div div className="col-md-3">
-                                <NewsCard imgURL={elem.urlToImage} title={elem.title} text={elem.description} url={elem.url} />
+                            return elem.description && <div key={elem.url} div className="col-md-3">
+                                <NewsCard imgURL={elem.urlToImage ? elem.urlToImage : techyImgURL} title={elem.title} text={elem.description} url={elem.url} />
                             </div>
                         })
                     }
