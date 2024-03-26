@@ -5,7 +5,7 @@ const NewsCard = (props) => {
 
     return (
         <>
-            <div className="card text-bg-info">
+            <div className="card ">
                 <img src={props.imgURL} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{props.title.slice(0,45)+'...'}</h5>
