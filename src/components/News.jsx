@@ -8,8 +8,8 @@ const News = () => {
     const [loading, setLoading] = useState(false)
     let pageSize=4;
     let fetchData = async (url) => {
-    // let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=0dd418eda768429cba391f6cab5450d9&&${page}`
-    setLoading(true); // Set loading to true before fetching data
+    // let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=0dd418eda768429cba391f6cab5450d9&page=${page}`
+    setLoading(true); 
         try {
             console.log("Fetching data...");
             let response = await fetch(url);
@@ -19,7 +19,7 @@ const News = () => {
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
-            setLoading(false); // Set loading to false after fetching data (whether successful or not)
+            setLoading(false); 
         }
     }
 
